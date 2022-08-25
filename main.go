@@ -2,24 +2,25 @@ package main
 
 import (
 	"fmt"
-	"log"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
+	"github.com/rs/zerolog/log"
+	"github.com/wicaksana/go-simple-server/middleware"
 )
 
 func main() {
-	http.HandleFunc("/", root)
-	http.HandleFunc("/health", health)
+	r := gin.New()
+	r.Use(middleware.JSONLogMIddleware())
 
-	log.Println("Starting server...")
-	log.Fatal(http.ListenAndServe(":8080", nil))
-}
+	gin.DebugPrintRouteFunc = func(httpMethod, absolutePath, handlerName string, nuHandlers int) {
+		log.Info().
+			Msg(fmt.Sprintf("endpoint %v %v %v %v\n", httpMethod, absolutePath, handlerName, nuHandlers))
+	}
 
-func root(writer http.ResponseWriter, req *http.Request) {
-	log.Println("\"/\" accessed by " + req.RemoteAddr)
-	fmt.Fprint(writer, "default")
-}
+	r.GET("/ping", func(c *gin.Context) {
+		c.JSON(http.StatusOK, "Pong")
+	})
 
-func health(writer http.ResponseWriter, req *http.Request) {
-	log.Println("\"/health\" accessed by " + req.RemoteAddr)
-	fmt.Fprint(writer, "OK")
+	r.Run()
 }
