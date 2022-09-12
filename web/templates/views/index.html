@@ -1,0 +1,60 @@
+{{ define "views/index.html"}}
+<!--index.html-->
+
+{{ template "layouts/header.html" .}}
+
+<main role="main" class="container">
+    <div class="main-body">
+        <h1>Log Simulator</h1>
+    </div>
+    <div>
+        <ul class="nav nav-tabs" id="nav-tab-logtypes" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="nav-tab-logtype-info" data-toggle="tab" href="#tab-content-logtype-info" role="tab" aria-controls="info" aria-selected="true">INFO</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="nav-tab-logtype-warning" data-toggle="tab" href="#tab-content-logtype-warning" role="tab" aria-controls="warning" aria-selected="true">WARNING</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="nav-tab-logtype-error" data-toggle="tab" href="#tab-content-logtype-error" role="tab" aria-controls="error" aria-selected="true">ERROR</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="nav-tab-logtypes-content">
+            <!--INFO-->
+            <div class="tab-pane fade show active" id="tab-content-logtype-info" role="tabpanel" aria-labelledby="nav-tab-logtype-info">
+                <form id="formInfoLogMsg" onsubmit="return false">
+                    <div class="form-group">
+                        <label for="inputInfoMessage">Message</label>
+                        <textarea id="textAreaInfoMsg" rows="3" class="form-control"></textarea>
+                    </div>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </form>
+            </div>
+            <!--WARNING-->
+            <div class="tab-pane fade" id="tab-content-logtype-warning" role="tabpanel" aria-labelledby="nav-tab-logtype-warning">
+                <form id="formWarningLogMsg" onsubmit="return false">
+                    <div class="form-group">
+                        <label for="inputWarningMessage">Message</label>
+                        <textarea id="textAreaWarningMsg" rows="3" class="form-control"></textarea>
+                    </div>
+                    <button class="btn btn-warning" type="submit">Submit</button>
+                </form>
+            </div>
+            <!--ERROR-->
+            <div class="tab-pane fade" id="tab-content-logtype-error" role="tabpanel" aria-labelledby="nav-tab-logtype-error">
+                <form id="formErrorLogMsg" onsubmit="return false">
+                    <div class="form-group">
+                        <label for="inputErrorMessage">Message</label>
+                        <textarea id="textAreaErrorMsg" rows="3" class="form-control"></textarea>
+                    </div>
+                    <button class="btn btn-danger" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+{{ template "layouts/footer.html" }}
+
+{{ end }}
