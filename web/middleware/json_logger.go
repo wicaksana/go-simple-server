@@ -2,6 +2,7 @@ package middleware
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 )
 
@@ -14,15 +15,13 @@ func JSONLogMIddleware() gin.HandlerFunc {
 			log.Error().Msg(ctx.Errors.String())
 		} else {
 			log.Info().
-				Str("client_ip", ctx.ClientIP()).
-				Str("method", ctx.Request.Method).
-				Str("path", ctx.Request.RequestURI).
-				Int("status", ctx.Writer.Status()).
-				Str("user_id", ctx.Request.URL.User.Username()).
-				Str("referrer", ctx.Request.Referer()).
-				Str("request_id", ctx.Writer.Header().Get("Request-Id")).
-				Send()
+				Dict("httpRequest", zerolog.Dict().
+					Str("requestMethod", ctx.Request.Method).
+					Str("requestUrl", ctx.Request.RequestURI).
+					Str("remoteIp", ctx.ClientIP()).
+					Int("status", ctx.Writer.Status()).
+					Str("referer", ctx.Request.Referer()),
+				).Send()
 		}
-
 	}
 }

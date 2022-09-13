@@ -4,12 +4,15 @@ import (
 	"fmt"
 
 	"github.com/gin-gonic/gin"
+	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 	"github.com/wicaksana/go-simple-server/web/controller"
 	"github.com/wicaksana/go-simple-server/web/middleware"
 )
 
 func main() {
+	zerolog.LevelFieldName = "severity"
+
 	r := gin.New()
 	r.Use(middleware.JSONLogMIddleware())
 	r.Use(gin.Recovery())
