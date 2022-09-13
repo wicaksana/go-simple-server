@@ -20,7 +20,10 @@ RUN go build -o server .
 FROM gcr.io/distroless/base-debian10
 WORKDIR /
 COPY --from=build /app/server /server
+COPY --from=build /app/web/static /web/static
+COPY --from=build /app/web/templates /web/templates
 ENV GIN_MODE=release
+ENV PORT=8080
 EXPOSE 8080
 USER nonroot:nonroot
 ENTRYPOINT ["/server"]
