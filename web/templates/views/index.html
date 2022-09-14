@@ -4,52 +4,83 @@
 {{ template "layouts/header.html" .}}
 
 <main role="main" class="container">
-    <div class="main-body">
-        <h1>Log Simulator</h1>
-    </div>
     <div>
-        <ul class="nav nav-tabs" id="nav-tab-logtypes" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="nav-tab-logtype-info" data-toggle="tab" href="#tab-content-logtype-info" role="tab" aria-controls="info" aria-selected="true">INFO</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="nav-tab-logtype-warning" data-toggle="tab" href="#tab-content-logtype-warning" role="tab" aria-controls="warning" aria-selected="true">WARNING</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="nav-tab-logtype-error" data-toggle="tab" href="#tab-content-logtype-error" role="tab" aria-controls="error" aria-selected="true">ERROR</a>
-            </li>
-        </ul>
-        <div class="tab-content" id="nav-tab-logtypes-content">
-            <!--INFO-->
-            <div class="tab-pane fade show active" id="tab-content-logtype-info" role="tabpanel" aria-labelledby="nav-tab-logtype-info">
-                <form id="formInfoLogMsg" onsubmit="return false">
-                    <div class="form-group">
-                        <label for="inputInfoMessage">Message</label>
-                        <textarea id="textAreaInfoMsg" rows="3" class="form-control"></textarea>
-                    </div>
-                    <button class="btn btn-primary" type="submit">Submit</button>
-                </form>
+        <h2>Message Generator</h2>
+        <div>
+            <ul class="nav nav-tabs" id="nav-tab-logtypes" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="nav-tab-logtype-info" data-toggle="tab" href="#tab-content-logtype-info" role="tab" aria-controls="info" aria-selected="true">INFO</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="nav-tab-logtype-warning" data-toggle="tab" href="#tab-content-logtype-warning" role="tab" aria-controls="warning" aria-selected="true">WARNING</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="nav-tab-logtype-error" data-toggle="tab" href="#tab-content-logtype-error" role="tab" aria-controls="error" aria-selected="true">ERROR</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="nav-tab-logtypes-content">
+                <!--INFO-->
+                <div class="tab-pane fade show active" id="tab-content-logtype-info" role="tabpanel" aria-labelledby="nav-tab-logtype-info">
+                    <form id="formInfoLogMsg" onsubmit="return false">
+                        <div class="form-group">
+                            <label for="inputInfoMessage">Message</label>
+                            <textarea id="textAreaInfoMsg" rows="3" class="form-control"></textarea>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Send</button>
+                    </form>
+                </div>
+                <!--WARNING-->
+                <div class="tab-pane fade" id="tab-content-logtype-warning" role="tabpanel" aria-labelledby="nav-tab-logtype-warning">
+                    <form id="formWarningLogMsg" onsubmit="return false">
+                        <div class="form-group">
+                            <label for="inputWarningMessage">Message</label>
+                            <textarea id="textAreaWarningMsg" rows="3" class="form-control"></textarea>
+                        </div>
+                        <button class="btn btn-warning" type="submit">Send</button>
+                    </form>
+                </div>
+                <!--ERROR-->
+                <div class="tab-pane fade" id="tab-content-logtype-error" role="tabpanel" aria-labelledby="nav-tab-logtype-error">
+                    <form id="formErrorLogMsg" onsubmit="return false">
+                        <div class="form-group">
+                            <label for="inputErrorMessage">Message</label>
+                            <textarea id="textAreaErrorMsg" rows="3" class="form-control"></textarea>
+                        </div>
+                        <button class="btn btn-danger" type="submit">Send</button>
+                    </form>
+                </div>
             </div>
-            <!--WARNING-->
-            <div class="tab-pane fade" id="tab-content-logtype-warning" role="tabpanel" aria-labelledby="nav-tab-logtype-warning">
-                <form id="formWarningLogMsg" onsubmit="return false">
-                    <div class="form-group">
-                        <label for="inputWarningMessage">Message</label>
-                        <textarea id="textAreaWarningMsg" rows="3" class="form-control"></textarea>
+        </div>
+    </div>
+
+    <div>
+        <h2>Metrics Generator</h2>
+        <div>
+            <form id="formMetricsGenerator" onsubmit="return false">
+                <div class="form-group row">
+                    <label for="inputTemperature" class="col-sm-2 col-form-label">Temperature</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="inputMetricsTemperature" placeholder="Temperature">
                     </div>
-                    <button class="btn btn-warning" type="submit">Submit</button>
-                </form>
-            </div>
-            <!--ERROR-->
-            <div class="tab-pane fade" id="tab-content-logtype-error" role="tabpanel" aria-labelledby="nav-tab-logtype-error">
-                <form id="formErrorLogMsg" onsubmit="return false">
-                    <div class="form-group">
-                        <label for="inputErrorMessage">Message</label>
-                        <textarea id="textAreaErrorMsg" rows="3" class="form-control"></textarea>
+                </div>
+                <div class="form-group row">
+                    <label for="inputHumidity" class="col-sm-2 col-form-label">Humidity</label>
+                    <div class="col-sm-10">
+                        <input type="number" class="form-control" id="inputMetricsHumidity" placeholder="Humidity">
                     </div>
-                    <button class="btn btn-danger" type="submit">Submit</button>
-                </form>
-            </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPrecipitation" class="col-sm-2 col-form-label">Precipitation</label>
+                    <div class="col-sm-10">
+                        <input type="number" step="any" min="0" max="1" class="form-control" id="inputMetricsPrecipitation" placeholder="Precipitation">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-sm-10">
+                      <button type="submit" class="btn btn-primary">Send</button>
+                    </div>
+                  </div>
+            </form>
         </div>
     </div>
 

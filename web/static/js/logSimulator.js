@@ -47,4 +47,23 @@ $(document).ready(function () {
             console.log(data);
         });
     });
+
+    // Metrics Generator
+    $("#formMetricsGenerator").submit(function() {
+        var metricsData = {
+            temperature: parseFloat($("#inputMetricsTemperature").val()),
+            humidity: parseFloat($("#inputMetricsHumidity").val()),
+            precipitation: parseFloat($("#inputMetricsPrecipitation").val())
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "metrics/new",
+            data: JSON.stringify(metricsData),
+            dataType: "json",
+            encode: true,
+        }).done(function (data) {
+            console.log(data);
+        });
+    });
 });
