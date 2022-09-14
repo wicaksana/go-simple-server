@@ -37,7 +37,9 @@ func newInfoMsgHandler(c *gin.Context) {
 	}
 
 	// Print message as stdout
-	log.Info().Msg(logMessage.Message)
+	log.Info().
+		Str("severity", "INFO").
+		Msg(logMessage.Message)
 
 	c.JSON(http.StatusOK, gin.H{"status": "INFO message received"})
 }
@@ -52,7 +54,9 @@ func newWarningMsgHandler(c *gin.Context) {
 	}
 
 	// Print message as stdout
-	log.Info().Msg(logMessage.Message)
+	log.Info().
+		Str("severity", "WARNING").
+		Msg(logMessage.Message)
 
 	c.JSON(http.StatusOK, gin.H{"status": "WARNING message received"})
 }
@@ -67,7 +71,9 @@ func newErrorMsgHandler(c *gin.Context) {
 	}
 
 	// Print message as stderr
-	log.Error().Msg(logMessage.Message)
+	log.Error().
+		Str("severity", "ERROR").
+		Msg(logMessage.Message)
 
 	c.JSON(http.StatusOK, gin.H{"status": "ERROR message received"})
 }

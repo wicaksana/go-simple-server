@@ -15,6 +15,7 @@ func JSONLogMIddleware() gin.HandlerFunc {
 			log.Error().Msg(ctx.Errors.String())
 		} else {
 			log.Info().
+				Str("severity", "INFO").
 				Dict("httpRequest", zerolog.Dict().
 					Str("requestMethod", ctx.Request.Method).
 					Str("requestUrl", ctx.Request.RequestURI).
