@@ -17,6 +17,6 @@ spec:
     spec:
       containers:
       - name: go-simple-server
-        image: us-central1-docker.pkg.dev/marifw-gke-main/marifw-container-repo/go-simple-server
+        image: us-central1-docker.pkg.dev/marifw-gke-main/marifw-container-repo/go-simple-server:latest
         ports:
         - containerPort: 8080

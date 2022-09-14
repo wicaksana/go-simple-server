@@ -5,8 +5,8 @@
 
 <main role="main" class="container">
     <div>
-        <h2>Message Generator</h2>
-        <div>
+        <h3>Message Generator</h3>
+        <div class="mt-4">
             <ul class="nav nav-tabs" id="nav-tab-logtypes" role="tablist">
                 <li class="nav-item">
                     <a class="nav-link active" id="nav-tab-logtype-info" data-toggle="tab" href="#tab-content-logtype-info" role="tab" aria-controls="info" aria-selected="true">INFO</a>
@@ -23,7 +23,7 @@
                 <div class="tab-pane fade show active" id="tab-content-logtype-info" role="tabpanel" aria-labelledby="nav-tab-logtype-info">
                     <form id="formInfoLogMsg" onsubmit="return false">
                         <div class="form-group">
-                            <label for="inputInfoMessage">Message</label>
+                            <label for="inputInfoMessage" class="mt-3">Message</label>
                             <textarea id="textAreaInfoMsg" rows="3" class="form-control"></textarea>
                         </div>
                         <button class="btn btn-primary" type="submit">Send</button>
@@ -33,7 +33,7 @@
                 <div class="tab-pane fade" id="tab-content-logtype-warning" role="tabpanel" aria-labelledby="nav-tab-logtype-warning">
                     <form id="formWarningLogMsg" onsubmit="return false">
                         <div class="form-group">
-                            <label for="inputWarningMessage">Message</label>
+                            <label for="inputWarningMessage" class="mt-3">Message</label>
                             <textarea id="textAreaWarningMsg" rows="3" class="form-control"></textarea>
                         </div>
                         <button class="btn btn-warning" type="submit">Send</button>
@@ -43,7 +43,7 @@
                 <div class="tab-pane fade" id="tab-content-logtype-error" role="tabpanel" aria-labelledby="nav-tab-logtype-error">
                     <form id="formErrorLogMsg" onsubmit="return false">
                         <div class="form-group">
-                            <label for="inputErrorMessage">Message</label>
+                            <label for="inputErrorMessage" class="mt-3">Message</label>
                             <textarea id="textAreaErrorMsg" rows="3" class="form-control"></textarea>
                         </div>
                         <button class="btn btn-danger" type="submit">Send</button>
@@ -52,10 +52,24 @@
             </div>
         </div>
     </div>
-
+    <!--msg alert: success -->
+    <div class="mt-3 alert alert-success collapse" role="alert" id="alertMessageSuccess">
+        Message sent.
+        <button type="button" class="close" aria-label="Close" id="buttonAlertMessageSuccess">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <!--msg alert: failed -->
+    <div class="mt-3 alert alert-danger collapse" role="alert" id="alertMessageFailed">
+        Error happened while sending the message.
+        <button type="button" class="close" aria-label="Close" id="buttonAlertMessageFailed">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <hr />
     <div>
-        <h2>Metrics Generator</h2>
-        <div>
+        <h3>Metrics Generator</h3>
+        <div  class="mt-4">
             <form id="formMetricsGenerator" onsubmit="return false">
                 <div class="form-group row">
                     <label for="inputTemperature" class="col-sm-2 col-form-label">Temperature</label>
@@ -81,6 +95,20 @@
                     </div>
                   </div>
             </form>
+            <!--metrics alert:success-->
+            <div class="alert alert-success collapse" role="alert" id="alertMetricsSuccess">
+                Metrics sent.
+                <button type="button" class="close" aria-label="Close" id="buttonAlertMetricsSuccess">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <!--metrics alert:failed-->
+            <div class="alert alert-danger collapse" role="alert" id="alertMetricsFailed">
+                Error happened while sending the metrics.
+                <button type="button" class="close" aria-label="Close" id="buttonAlertMetricsFailed">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
         </div>
     </div>
 
