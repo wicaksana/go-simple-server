@@ -3,6 +3,7 @@ package controller
 import (
 	"net/http"
 
+	"github.com/rs/zerolog"
 	"github.com/rs/zerolog/log"
 
 	"github.com/gin-gonic/gin"
@@ -96,6 +97,8 @@ func newMetricsMsgHandler(c *gin.Context) {
 
 	log.Info().
 		Str("severity", "INFO").
+		Dict("logging.googleapis.com/labels", zerolog.Dict().
+			Str("logType", "metrics")).
 		Float32("temperature", metricsMessage.Temperature).
 		Float32("humidity", metricsMessage.Humidity).
 		Float32("precipitation", metricsMessage.Precipitation).
